@@ -1,48 +1,61 @@
-import os, sys
+
 import pytest
+from backend.cart_service.app import app, carts
 
-# Ajusta PYTHONPATH para localizar los módulos del microservicio
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'backend', 'app')))
-
-from Shopping_cart import ShoppingCart
-from Project_managment import Product
-
-@pytest.fixture
-def cart():
-    return ShoppingCart(user_id=123)
+@pytest.fixture(autouse=True)
+def clear_carts():
+    # Antes de cada test
+    carts.clear()
+    yield
+    carts.clear()
 
 @pytest.fixture
-def sample_product():
-    # Crea un producto de ejemplo para añadir al carrito
-    return Product(1, "Libro", "Un libro interesante", 20.0, 100, "Libros")
+def client():
+    app.testing = True
+    return app.test_client()
 
-def test_add_product(cart, sample_product):
-    cart.add_product(sample_product, 2)
-    assert len(cart._items) == 1
-    prod, qty = cart._items[0]
-    assert prod is sample_product
-    assert qty == 2
+def test_list_empty_cart(client):
+    resp = client.get("/cart/42/items")
+    assert resp.status_code == 200
+    data = resp.get_json()
+    assert data["items"] == []
+    assert data["total"] == 0
 
-def test_remove_product(cart, sample_product):
-    cart.add_product(sample_product, 3)
-    cart.remove_product(sample_product.get_product_id())
-    assert len(cart._items) == 0
+def test_add_and_list_item(client):
+    item = {
+        "product_id": 1,
+        "name": "Libro",
+        "description": "Historia",
+        "price": 15.0,
+        "stock": 50,
+        "category": "Libros",
+        "quantity": 2
+    }
+    resp = client.post("/cart/42/items", json=item)
+    assert resp.status_code == 201
 
-def test_update_quantity(cart, sample_product):
-    cart.add_product(sample_product, 5)
-    # Actualiza la cantidad a 2
-    assert cart.update_quantity(sample_product.get_product_id(), 2)
-    prod, qty = cart._items[0]
-    assert qty == 2
+    resp = client.get("/cart/42/items")
+    data = resp.get_json()
+    assert len(data["items"]) == 1
+    assert data["items"][0]["product_id"] == 1
+    assert data["total"] == 30.0
 
-def test_update_nonexistent(cart):
-    # Intentar actualizar un producto que no existe debe devolver False
-    assert not cart.update_quantity(999, 1)
+def test_update_and_delete_item(client):
+    # Añade primero
+    client.post("/cart/7/items", json={
+        "product_id": 3, "name":"Taza","description":"Cerámica","price":5.0,"stock":20,"category":"Hogar","quantity":1
+    })
 
-def test_show_summary(capsys, cart, sample_product):
-    # Verifica la salida por terminal de show_summary()
-    cart.add_product(sample_product, 3)
-    cart.show_summary()
-    captured = capsys.readouterr()
-    assert "Libro x3 - $60.0" in captured.out
-    assert "Total: $60.0" in captured.out
+    # PUT actualiza cantidad a 4
+    resp = client.put("/cart/7/items/3", json={"quantity": 4})
+    assert resp.status_code == 200
+    data = client.get("/cart/7/items").get_json()
+    assert data["items"][0]["quantity"] == 4
+    assert data["total"] == 20.0
+
+    # DELETE elimina
+    resp = client.delete("/cart/7/items/3")
+    assert resp.status_code == 200
+    data = client.get("/cart/7/items").get_json()
+    assert data["items"] == []
+    assert data["total"] == 0
