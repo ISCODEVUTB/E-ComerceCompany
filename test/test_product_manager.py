@@ -1,5 +1,5 @@
 import pytest
-from bakcend.product_service.service import ProductManager, Product
+from backend.product_service.service import ProductManager, Product
 
 @pytest.fixture
 def pm():
