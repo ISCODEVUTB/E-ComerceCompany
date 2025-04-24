@@ -1,12 +1,14 @@
 from flask import Flask, jsonify, request
-from service import ProductManager
+from backend.product_service.service import ProductService
+pm = ProductService()
+
 
 app = Flask(__name__)
-pm = ProductManager()
+pm = ProductService()
 
 @app.route("/products", methods=["GET"])
 def list_products():
-    return jsonify([vars(p) for p in pm.get_all()]), 200
+    return jsonify(pm.list_products()), 200
 
 @app.route("/products", methods=["POST"])
 def create_product():
