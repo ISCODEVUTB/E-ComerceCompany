@@ -1,7 +1,6 @@
 import pytest
-from backend.cart_service.service import ShoppingCart
-from backend.product_service.service import Product
-from backend.cart_service.app import app as cart_app, carts as carts_store
+from .service import ShoppingCart
+from ..product_service.service import Product
 
 
 @pytest.fixture(autouse=True)
