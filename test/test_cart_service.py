@@ -1,6 +1,8 @@
 import pytest
-from backend.cart_service.service import ShoppingCart, Product
+from backend.cart_service.service import ShoppingCart
+from backend.product_service.service import Product
 from backend.cart_service.app import app as cart_app, carts as carts_store
+
 
 @pytest.fixture(autouse=True)
 def clear_carts():
