@@ -2,7 +2,7 @@ import os, sys
 import pytest
 
 # Ajusta PYTHONPATH para localizar los módulos del microservicio
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'bakcend', 'app')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'backend', 'app')))
 
 from Shopping_cart import ShoppingCart
 from Project_managment import Product
