@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
-from service import ShoppingCart, Product
+from backend.cart_service.service import ShoppingCart
+from backend.product_service.service import Product
 
 app = Flask(__name__)
-# Simple in-memory storage for carts per user
+
 carts = {}
 
 def get_cart(user_id):
@@ -27,7 +28,7 @@ def list_cart_items(user_id):
 @app.route("/cart/<user_id>/items", methods=["POST"])
 def add_item(user_id):
     data = request.json
-    # Expecting full product payload in request body
+
     product = Product(
         data["product_id"],
         data.get("name", ""),
