@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from flask_wtf import CSRFProtect
 from backend.cart_service.service import ShoppingCart
