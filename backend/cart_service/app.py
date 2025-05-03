@@ -4,7 +4,7 @@ from backend.cart_service.service import ShoppingCart
 from backend.product_service.service import Product
 
 app = Flask(__name__)
-app.config['7777'] = '7777'
+app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
 csrf = CSRFProtect(app)
 
 carts = {}
