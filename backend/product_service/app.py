@@ -5,8 +5,9 @@ pm = ProductService()
 
 
 app = Flask(__name__)
-app.config['7777'] = '7777'
+app.config['SECRET_KEY'] = os.environ['FLASK_SECRET_KEY']
 csrf = CSRFProtect(app)
+
 pm = ProductService()
 
 @app.route("/products", methods=["GET"])
@@ -19,7 +20,6 @@ def create_product():
     pm.create_product(data)
     return jsonify({"msg":"Producto creado"}), 201
 
-# rutas PUT /products/<id> y DELETE /products/<id> análogas…
 
 if __name__ == "__main__":
     app.run(port=5001)
