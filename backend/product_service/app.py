@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_wtf import CSRFProtect
 from backend.product_service.service import ProductService
