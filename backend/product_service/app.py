@@ -1,9 +1,12 @@
 from flask import Flask, jsonify, request
+from flask_wtf import CSRFProtect
 from backend.product_service.service import ProductService
 pm = ProductService()
 
 
 app = Flask(__name__)
+app.config['7777'] = '7777'
+csrf = CSRFProtect(app)
 pm = ProductService()
 
 @app.route("/products", methods=["GET"])
