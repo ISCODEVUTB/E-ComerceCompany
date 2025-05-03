@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_wtf import CSRFProtect
 from backend.cart_service.service import ShoppingCart
 from backend.product_service.service import Product
 
 app = Flask(__name__)
+app.config['7777'] = '7777'
+csrf = CSRFProtect(app)
 
 carts = {}
 
