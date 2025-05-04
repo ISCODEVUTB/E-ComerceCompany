@@ -1,0 +1,33 @@
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      FLASK_SECRET_KEY: ${{ secrets.FLASK_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with: python-version: '3.12'
+
+      - name: Install deps cart
+        run: pip install -r backend/cart_service/requirements.txt
+
+      - name: Install deps product
+        run: pip install -r backend/product_service/requirements.txt
+
+      - name: Run tests with coverage
+        run: |
+          pytest --maxfail=1 --disable-warnings \
+                 --cov=backend/cart_service \
+                 --cov=backend/product_service \
+                 --cov-report=xml:coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.login=${{ env.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
