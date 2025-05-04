@@ -40,6 +40,7 @@ def test_unit_find_update_delete(ps):
 @pytest.fixture
 def client():
     product_app.testing = True
+    product_app.config['WTF_CSRF_ENABLED'] = False
     return product_app.test_client()
 
 def test_integration_get_empty(client):
