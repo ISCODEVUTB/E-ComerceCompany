@@ -38,6 +38,7 @@ def test_unit_show_summary(capsys, cs):
 @pytest.fixture
 def client():
     cart_app.testing = True
+    cart_app.config['WTF_CSRF_ENABLED'] = False
     return cart_app.test_client()
 
 def test_integration_empty_cart(client):
