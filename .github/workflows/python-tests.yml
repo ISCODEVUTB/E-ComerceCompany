@@ -2,8 +2,15 @@ name: Run Python Tests
 
 on:
   push:
-    branches-ignore:
+    branches:
+      - main       
+      - 'feature/**'
+      - develop     
+  pull_request:
+    branches:
       - main
+      - develop
+      - 'feature/**'
 
 jobs:
   test:
@@ -11,13 +18,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup Python
         uses: actions/setup-python@v4
-        with: python-version: '3.12'
-      - name: Install all deps
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
         run: |
           pip install -r backend/cart_service/requirements.txt
           pip install -r backend/product_service/requirements.txt
           pip install -r backend/user_service/requirements.txt
-      - name: Run tests
+
+      - name: Run pytest
         run: pytest test/ --maxfail=1 --disable-warnings -q
