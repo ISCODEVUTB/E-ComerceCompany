@@ -1,52 +1,52 @@
 import os
 from flask import Flask, request, jsonify
 from flask_wtf import CSRFProtect
-from backend.user_service.service import UserService, User
+from models import db, User
+from config import Config
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY', 'dev-key')
+app.config.from_object(Config)
 csrf = CSRFProtect(app)
+db.init_app(app)
 
-srv = UserService()
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
-@app.route('/users', methods=['POST'])
+@app.post("/users")
 @csrf.exempt
 def create_user():
     data = request.json
-    user = User(**data)
-    srv.create(user)
-    return jsonify({'message': 'User created'}), 201
+    new_user = User(**data)
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"message": "User created"}), 201
 
-@app.route('/users', methods=['GET'])
-def list_users():
-    users = srv.list()
-    return jsonify([u.dict() for u in users]), 200
-
-@app.route('/users/<int:user_id>', methods=['GET'])
+@app.get("/users/<int:user_id>")
 def get_user(user_id):
-    user = srv.get(user_id)
-    if not user:
-        return jsonify({'error': 'User not found'}), 404
-    return jsonify(user.dict()), 200
+    user = User.query.get(user_id)
+    if user:
+        return jsonify(user.serialize())
+    return jsonify({"error": "User not found"}), 404
 
-@app.route('/users/<int:user_id>', methods=['PUT'])
+@app.put("/users/<int:user_id>")
 @csrf.exempt
 def update_user(user_id):
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
     data = request.json
-    new_user = User(**data)
-    ok = srv.update(user_id, new_user)
-    if not ok:
-        return jsonify({'error': 'User not found'}), 404
-    return jsonify({'message': 'User updated'}), 200
+    for key, value in data.items():
+        setattr(user, key, value)
+    db.session.commit()
+    return jsonify({"message": "User updated"})
 
-@app.route('/users/<int:user_id>', methods=['DELETE'])
+@app.delete("/users/<int:user_id>")
 @csrf.exempt
 def delete_user(user_id):
-    ok = srv.delete(user_id)
-    if not ok:
-        return jsonify({'error': 'User not found'}), 404
-    return jsonify({'message': 'User deleted'}), 200
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5003))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"message": "User deleted"})
