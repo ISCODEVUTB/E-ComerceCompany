@@ -1,0 +1,7 @@
+Flask==2.3.3
+Flask-WTF
+Flask-SQLAlchemy
+SQLAlchemy
+pydantic
+pytest
+python-dotenv
