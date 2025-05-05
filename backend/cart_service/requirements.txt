@@ -7,3 +7,4 @@ pytest-cov
 Flask-WTF
 pytest
 pytest-cov
+werkzeug<2.3
