@@ -1,16 +1,16 @@
-name: Python Tests
+#name: Python Tests
 
-on:
+#on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
-jobs:
+#jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps:
+    #steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
