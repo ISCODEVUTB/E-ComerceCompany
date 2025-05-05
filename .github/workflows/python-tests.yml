@@ -26,6 +26,9 @@ jobs:
 
     - name: Install dependencies for product_service
       run: pip install -r backend/product_service/requirements.txt
+      
+    - name: Install dependencies for user_service
+      run: pip install -r backend/user_service/requirements.txt
 
     - name: Run tests
       run: pytest test/
