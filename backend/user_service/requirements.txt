@@ -1,10 +1,3 @@
-bcrypt==4.3.0
-pytest
-pylint==3.3.4
-Flask==3.1.0
-Flask-SeaSurf==1.1.1
-pytest-cov
+Flask
 Flask-WTF
-pytest
-pytest-cov
 pydantic
