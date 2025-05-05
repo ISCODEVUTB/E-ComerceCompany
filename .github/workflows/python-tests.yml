@@ -1,16 +1,16 @@
-#name: Python Tests
+name: Python Tests
 
-#on:
+on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
-#jobs:
+jobs:
   test:
     runs-on: ubuntu-latest
 
-    #steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -24,10 +24,7 @@
 
       - name: Install dependencies for all services
         run: |
-          pip install -r backend/cart_service/requirements.txt
-          pip install -r backend/product_service/requirements.txt
-          pip install -r backend/user_service/requirements.txt
-          pip install -r backend/order_service/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run tests
         run: pytest test/ --maxfail=1 --disable-warnings -q
