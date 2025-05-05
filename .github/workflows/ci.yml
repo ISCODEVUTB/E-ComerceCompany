@@ -1,0 +1,51 @@
+name: CI & SonarCloud
+
+on:
+push:
+branches: \[ main ]
+pull\_request:
+branches: \[ main ]
+
+jobs:
+build-test-analyze:
+runs-on: ubuntu-latest
+env:
+SONAR\_TOKEN: \${{ secrets.SONAR\_TOKEN }}
+FLASK\_SECRET\_KEY: \${{ secrets.FLASK\_SECRET\_KEY }}
+
+```
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v3
+
+  - name: Set up Python 3.12
+    uses: actions/setup-python@v4
+    with:
+      python-version: '3.12'
+
+  - name: Install dependencies (cart_service)
+    run: pip install -r backend/cart_service/requirements.txt
+
+  - name: Install dependencies (product_service)
+    run: pip install -r backend/product_service/requirements.txt
+
+  - name: Install dependencies (user_service)
+    run: pip install -r backend/user_service/requirements.txt
+
+  - name: Run tests with coverage
+    run: |
+      pytest --maxfail=1 --disable-warnings \
+             --cov=backend/cart_service \
+             --cov=backend/product_service \
+             --cov=backend/user_service \
+             --cov-report=xml:coverage.xml \
+             --cov-report=term-missing
+
+  - name: SonarCloud Scan
+    uses: SonarSource/sonarcloud-github-action@master
+    with:
+      args: >
+        -Dsonar.login=${{ env.SONAR_TOKEN }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
