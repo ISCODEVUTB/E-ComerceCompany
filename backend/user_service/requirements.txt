@@ -7,3 +7,4 @@ pytest-cov
 Flask-WTF
 pytest
 pytest-cov
+pydantic
