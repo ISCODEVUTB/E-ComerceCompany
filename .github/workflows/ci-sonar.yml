@@ -1,0 +1,45 @@
+name: CI & SonarCloud
+
+# Se dispara solo en PRs a main y en pushes a main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+    env:
+      FLASK_SECRET_KEY: ${{ secrets.FLASK_SECRET_KEY }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with: python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/cart_service/requirements.txt
+          pip install -r backend/product_service/requirements.txt
+          pip install -r backend/user_service/requirements.txt
+
+      - name: Run tests with coverage
+        run: |
+          pytest --maxfail=1 --disable-warnings \
+                 --cov=backend/cart_service \
+                 --cov=backend/product_service \
+                 --cov=backend/user_service \
+                 --cov-report=xml:coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1.11.0
+        with:
+          args: >
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
