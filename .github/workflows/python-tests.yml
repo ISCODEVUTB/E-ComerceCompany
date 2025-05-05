@@ -1,0 +1,23 @@
+name: Run Python Tests
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with: python-version: '3.12'
+      - name: Install all deps
+        run: |
+          pip install -r backend/cart_service/requirements.txt
+          pip install -r backend/product_service/requirements.txt
+          pip install -r backend/user_service/requirements.txt
+      - name: Run tests
+        run: pytest test/ --maxfail=1 --disable-warnings -q
