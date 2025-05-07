@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies for all services
+      - name: Install all deps
         run: |
           pip install -r requirements.txt
 
