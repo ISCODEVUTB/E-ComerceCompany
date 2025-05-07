@@ -1,6 +1,5 @@
 name: CI & SonarCloud
 
-# Se dispara solo en PRs a main y en pushes a main
 on:
   push:
     branches:
