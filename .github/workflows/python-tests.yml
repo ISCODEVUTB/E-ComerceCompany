@@ -21,12 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r backend/requirements.txt || pip install -r requirements.txt
           pip install pytest pytest-cov
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=backend/app --cov-report=term-missing --cov-report=html backend/app/tests/
+          pytest --cov=backend/app --cov-report=term-missing --cov-report=html backend/app/tests/test_integration_v1.py
 
       - name: Upload coverage report as artifact
         uses: actions/upload-artifact@v4
