@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-           pip install -r E-ComerceCompany/backend/app/requirements.txt
+          pip install -r requirements.txt
             pip install pytest pytest-cov
 
       - name: Run tests with coverage
