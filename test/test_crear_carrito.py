@@ -1,6 +1,6 @@
 import pytest
 from sqlalchemy.orm import Session
-from database import SessionLocal
+from backend.app.database import SessionLocal
 from models import Carrito
 from schemas import CarritoBase
 import crud
