@@ -1,8 +1,8 @@
 import pytest
 from sqlalchemy.orm import Session
-from backend.app.database import SessionLocal
-from models import Usuario
-from schemas import UsuarioCreate
+from backend.app.logic.database import SessionLocal
+from backend.app.logic.models import Usuario
+from backend.app.logic.schemas import UsuarioCreate
 import crud
 
 def test_crear_usuario():

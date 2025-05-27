@@ -1,8 +1,8 @@
 import pytest
 from sqlalchemy.orm import Session
-from backend.app.database import SessionLocal
-from models import Orden
-from schemas import OrdenBase
+from backend.app.logic.database import SessionLocal
+from backend.app.logic.models import Orden
+from backend.app.logic.schemas import OrdenBase
 import crud
 
 def test_crear_orden():
