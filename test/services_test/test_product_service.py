@@ -1,6 +1,6 @@
 import pytest
-from backend.product_service.service import Product, ProductService
-from backend.product_service.app import app as product_app, pm as product_manager
+from backend.app.logic.models import Producto
+from backend.app.logic.schemas import ProductoBase
 
 @pytest.fixture(autouse=True)
 def clear_products():
