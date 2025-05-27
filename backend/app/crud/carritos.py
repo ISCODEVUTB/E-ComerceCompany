@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Carrito
-from ..schemas import CarritoBase
+from backend.app.logic.models import Carrito
+from backend.app.logic.schemas import CarritoBase
 
 def obtener_carritos(db: Session):
     return db.query(Carrito).all()

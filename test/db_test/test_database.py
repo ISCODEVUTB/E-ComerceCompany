@@ -1,5 +1,5 @@
 from sqlalchemy import inspect
-from database import engine  # Cambiado a un import absoluto
+from backend.app.logic.database import engine  # Cambiado a un import absoluto
 
 try:
     # Crear un inspector para la base de datos
