@@ -7,10 +7,10 @@ from backend.app.logic.schemas import ProductoCreate
 
 def test_crear_producto(db):
     # Arrange
-    nuevo_producto = ProductoCreate(nombre="Laptop", descripcion="Gaming laptop", precio=1500.0)
+    nuevo_producto = productos.ProductoCreate(nombre="Laptop", descripcion="Gaming laptop", precio=1500.0)
 
     # Act
-    producto_creado = crear_producto(db, nuevo_producto)
+    producto_creado = productos.crear_producto(db, nuevo_producto)
 
     # Assert
     assert producto_creado.id is not None
