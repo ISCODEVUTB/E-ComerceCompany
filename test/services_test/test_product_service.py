@@ -1,6 +1,7 @@
 import pytest
 from backend.app.logic.models import Producto
 from backend.app.logic.schemas import ProductoBase
+from backend.app.crud import productos
 
 @pytest.fixture(autouse=True)
 def clear_products():

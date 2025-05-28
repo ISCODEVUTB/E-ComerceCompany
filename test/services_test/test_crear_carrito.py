@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from backend.app.logic.database import SessionLocal
 from backend.app.logic.models import Carrito
 from backend.app.logic.schemas import CarritoBase
-import crud
+from backend.app.crud import carritos
 
 def test_crear_carrito():
     db: Session = SessionLocal()

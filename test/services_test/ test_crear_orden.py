@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from backend.app.logic.database import SessionLocal
 from backend.app.logic.models import Orden
 from backend.app.logic.schemas import OrdenBase
-import crud
+from backend.app.crud import ordenes
 
 def test_crear_orden():
     db: Session = SessionLocal()
