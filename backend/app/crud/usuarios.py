@@ -9,7 +9,7 @@ def obtener_usuario_por_id(db: Session, usuario_id: int):
     return db.query(Usuario).filter(Usuario.id == usuario_id).first()
 
 def crear_usuario(db: Session, usuario: UsuarioCreate):
-    nuevo_usuario = Usuario(**usuario.dict())
+    nuevo_usuario = Usuario(**usuario.model_dump())
     db.add(nuevo_usuario)
     db.commit()
     db.refresh(nuevo_usuario)
@@ -18,7 +18,7 @@ def crear_usuario(db: Session, usuario: UsuarioCreate):
 def actualizar_usuario(db: Session, usuario_id: int, usuario: UsuarioCreate):
     usuario_existente = obtener_usuario_por_id(db, usuario_id)
     if usuario_existente:
-        for key, value in usuario.dict().items():
+        for key, value in usuario.model_dump().items():
             setattr(usuario_existente, key, value)
         db.commit()
         db.refresh(usuario_existente)

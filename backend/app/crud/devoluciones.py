@@ -9,7 +9,7 @@ def obtener_devolucion_por_id(db: Session, devolucion_id: int):
     return db.query(Devolucion).filter(Devolucion.id == devolucion_id).first()
 
 def crear_devolucion(db: Session, devolucion: DevolucionBase):
-    nueva_devolucion = Devolucion(**devolucion.dict())
+    nueva_devolucion = Devolucion(**devolucion.model_dump())
     db.add(nueva_devolucion)
     db.commit()
     db.refresh(nueva_devolucion)
@@ -18,7 +18,7 @@ def crear_devolucion(db: Session, devolucion: DevolucionBase):
 def actualizar_devolucion(db: Session, devolucion_id: int, devolucion: DevolucionBase):
     devolucion_existente = obtener_devolucion_por_id(db, devolucion_id)
     if devolucion_existente:
-        for key, value in devolucion.dict().items():
+        for key, value in devolucion.model_dump().items():
             setattr(devolucion_existente, key, value)
         db.commit()
         db.refresh(devolucion_existente)

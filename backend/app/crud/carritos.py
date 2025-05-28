@@ -9,7 +9,7 @@ def obtener_carrito_por_id(db: Session, carrito_id: int):
     return db.query(Carrito).filter(Carrito.id == carrito_id).first()
 
 def crear_carrito(db: Session, carrito: CarritoBase):
-    nuevo_carrito = Carrito(**carrito.dict())
+    nuevo_carrito = Carrito(**carrito.model_dump())
     db.add(nuevo_carrito)
     db.commit()
     db.refresh(nuevo_carrito)
@@ -18,7 +18,7 @@ def crear_carrito(db: Session, carrito: CarritoBase):
 def actualizar_carrito(db: Session, carrito_id: int, carrito: CarritoBase):
     carrito_existente = obtener_carrito_por_id(db, carrito_id)
     if carrito_existente:
-        for key, value in carrito.dict().items():
+        for key, value in carrito.model_dump().items():
             setattr(carrito_existente, key, value)
         db.commit()
         db.refresh(carrito_existente)

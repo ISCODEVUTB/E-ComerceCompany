@@ -9,7 +9,7 @@ def obtener_orden_por_id(db: Session, orden_id: int):
     return db.query(Orden).filter(Orden.id == orden_id).first()
 
 def crear_orden(db: Session, orden: OrdenBase):
-    nueva_orden = Orden(**orden.dict())
+    nueva_orden = Orden(**orden.model_dump())
     db.add(nueva_orden)
     db.commit()
     db.refresh(nueva_orden)
@@ -18,7 +18,7 @@ def crear_orden(db: Session, orden: OrdenBase):
 def actualizar_orden(db: Session, orden_id: int, orden: OrdenBase):
     orden_existente = obtener_orden_por_id(db, orden_id)
     if orden_existente:
-        for key, value in orden.dict().items():
+        for key, value in orden.model_dump().items():
             setattr(orden_existente, key, value)
         db.commit()
         db.refresh(orden_existente)
