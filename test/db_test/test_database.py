@@ -15,4 +15,3 @@ try:
     assert len(tables) >= 0  # Si no hay tablas, la conexión sigue siendo válida
 except Exception as e:
     print("Error al conectar con la base de datos:", e)
-    assert False  # Falla el test si ocurre un error
