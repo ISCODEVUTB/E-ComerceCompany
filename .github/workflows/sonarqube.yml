@@ -33,6 +33,7 @@ jobs:
       - name: Run tests with coverage
         env:
           PYTHONPATH: ${{ github.workspace }}
+          DATABASE_URL: mssql+pyodbc://talento:cartagena@nodossolutions.com:1435/ecommerce?driver=ODBC+Driver+17+for+SQL+Server&TrustServerCertificate=yes
         run: |
           pytest test --ignore=test/integration_test --ignore=test/db_test --cov=. --cov-report=xml
 
