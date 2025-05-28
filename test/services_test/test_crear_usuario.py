@@ -13,7 +13,7 @@ def test_crear_usuario():
         rol="cliente",
         contrasena="123456"
     )
-    usuario = crud.crear_usuario(db, usuario_data)
+    usuario = crear_usuario(db, usuario_data)
     assert usuario.nombre == "Test User"
     db.delete(usuario)
     db.commit()

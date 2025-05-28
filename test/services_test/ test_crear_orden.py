@@ -13,7 +13,7 @@ def test_crear_orden():
         monto_total=100.0,
         estado="pendiente"
     )
-    orden = crud.crear_orden(db, orden_data)
+    orden = crear_orden(db, orden_data)
     assert orden.monto_total == 100.0
     db.delete(orden)
     db.commit()
