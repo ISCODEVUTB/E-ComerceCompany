@@ -12,8 +12,7 @@ class UsuarioCreate(UsuarioBase):
 class Usuario(UsuarioBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ProductoBase(BaseModel):
     nombre: str
@@ -27,8 +26,7 @@ class ProductoCreate(ProductoBase):
 class Producto(ProductoBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class CarritoItemBase(BaseModel):
     producto_id: int
@@ -38,8 +36,7 @@ class CarritoItemBase(BaseModel):
 class CarritoItem(CarritoItemBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class CarritoBase(BaseModel):
     usuario_id: int
@@ -49,8 +46,7 @@ class Carrito(CarritoBase):
     id: int
     items: List[CarritoItem] = []
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class OrdenBase(BaseModel):
     usuario_id: int
@@ -61,8 +57,7 @@ class OrdenBase(BaseModel):
 class Orden(OrdenBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class DevolucionBase(BaseModel):
     orden_id: int
@@ -72,5 +67,4 @@ class DevolucionBase(BaseModel):
 class Devolucion(DevolucionBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
