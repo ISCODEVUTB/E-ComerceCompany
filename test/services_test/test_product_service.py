@@ -19,6 +19,6 @@ def test_crear_producto(db):
     assert producto_creado.precio == 1500.0
 
     # Y podemos verificar que fue insertado
-    producto_en_db = obtener_producto_por_id(db, producto_creado.id)
+    producto_en_db = productos.obtener_producto_por_id(db, producto_creado.id)
     assert producto_en_db is not None
     assert producto_en_db.nombre == "Laptop"
