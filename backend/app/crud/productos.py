@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Producto
-from ..schemas import ProductoCreate
+from backend.app.logic.models import Producto
+from backend.app.logic.schemas import ProductoCreate
 
 def obtener_productos(db: Session):
     return db.query(Producto).all()

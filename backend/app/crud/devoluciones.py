@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Devolucion
-from ..schemas import DevolucionBase
+from backend.app.logic.models import Devolucion
+from backend.app.logic.schemas import DevolucionBase
 
 def obtener_devoluciones(db: Session):
     return db.query(Devolucion).all()

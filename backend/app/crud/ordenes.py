@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Orden
-from ..schemas import OrdenBase
+from backend.app.logic.models import Orden
+from backend.app.logic.schemas import OrdenBase
 
 def obtener_ordenes(db: Session):
     return db.query(Orden).all()

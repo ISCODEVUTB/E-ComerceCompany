@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models import Usuario
-from ..schemas import UsuarioCreate
+from backend.app.logic.models import Usuario
+from backend.app.logic.schemas import UsuarioCreate
 
 def obtener_usuarios(db: Session):
     return db.query(Usuario).all()

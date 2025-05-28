@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..crud.ordenes import (
+from backend.app.crud.ordenes import (
     obtener_ordenes, obtener_orden_por_id, crear_orden,
     actualizar_orden, eliminar_orden
 )
-from ..schemas import Orden, OrdenBase
-from ..database import get_db
+from backend.app.logic.schemas import Orden, OrdenBase
+from backend.app.logic.database import get_db
 
 router = APIRouter()
 

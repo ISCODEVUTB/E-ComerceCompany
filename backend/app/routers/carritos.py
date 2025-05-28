@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from ..crud.carritos import (
+from backend.app.crud.carritos import (
     obtener_carritos, obtener_carrito_por_id, crear_carrito,
     actualizar_carrito, eliminar_carrito
 )
-from ..schemas import Carrito, CarritoBase
-from ..database import get_db
+from backend.app.logic.schemas import Carrito, CarritoBase
+from backend.app.logic.database import get_db
 
 router = APIRouter()
 
