@@ -1,4 +1,5 @@
 import pytest
+from sqlalchemy.orm import Session
 from backend.app.logic.models import Producto
 from backend.app.logic.schemas import ProductoBase
 from backend.app.crud import productos
