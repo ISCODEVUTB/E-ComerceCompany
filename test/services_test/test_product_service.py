@@ -8,7 +8,7 @@ from backend.app.logic.schemas import ProductoCreate
 
 def test_crear_producto(db):
     # Arrange
-    nuevo_producto = productos.ProductoCreate(nombre="Laptop", descripcion="Gaming laptop", precio=1500.0)
+    nuevo_producto = productos.ProductoCreate(nombre="Laptop", descripcion="Gaming laptop", precio=1500.0, inventario=10)
 
     # Act
     producto_creado = productos.crear_producto(db, nuevo_producto)
