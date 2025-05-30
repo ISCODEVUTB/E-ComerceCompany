@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from backend.app.logic.database import SessionLocal
 from backend.app.logic.models import Usuario
 from backend.app.logic.schemas import UsuarioCreate
-from backend.app.crud import usuarios
+from backend.app.crud import user
 
 def test_crear_usuario():
     db: Session = SessionLocal()

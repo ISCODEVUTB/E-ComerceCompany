@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.app.crud.ordenes import (
+from backend.app.crud.order import (
     obtener_ordenes, obtener_orden_por_id, crear_orden,
     actualizar_orden, eliminar_orden
 )

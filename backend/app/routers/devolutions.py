@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.app.crud.devoluciones import (
+from backend.app.crud.devolutions import (
     obtener_devoluciones, obtener_devolucion_por_id, crear_devolucion,
     actualizar_devolucion, eliminar_devolucion
 )

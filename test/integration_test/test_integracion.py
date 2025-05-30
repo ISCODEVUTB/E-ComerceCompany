@@ -4,8 +4,8 @@ import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from app.main import app
-from app.database import Base, get_db  # Ajusta según tu estructura
+from backend.app.logic.main import app
+from backend.app.logic.database import Base, get_db  # Ajusta según tu estructura
 
 # Crea una base de datos SQLite en memoria para pruebas
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"

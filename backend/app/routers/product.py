@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.app.crud.productos import (
+from backend.app.crud.product import (
     obtener_productos, obtener_producto_por_id, crear_producto,
     actualizar_producto, eliminar_producto
 )

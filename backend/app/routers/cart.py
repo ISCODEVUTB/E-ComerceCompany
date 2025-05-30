@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.app.crud.carritos import (
+from backend.app.crud.cart import (
     obtener_carritos, obtener_carrito_por_id, crear_carrito,
     actualizar_carrito, eliminar_carrito
 )

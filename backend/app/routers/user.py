@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.app.crud.usuarios import (
+from backend.app.crud.user import (
     obtener_usuarios, obtener_usuario_por_id, crear_usuario,
     actualizar_usuario, eliminar_usuario
 )
