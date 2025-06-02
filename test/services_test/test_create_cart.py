@@ -11,7 +11,7 @@ def test_crear_carrito():
         usuario_id=1,
         estado="abierto"
     )
-    carrito = carritos.crear_carrito(db, carrito_data)
+    carrito = cart.crear_carrito(db, carrito_data)
     assert carrito.estado == "abierto"
     db.delete(carrito)
     db.commit()

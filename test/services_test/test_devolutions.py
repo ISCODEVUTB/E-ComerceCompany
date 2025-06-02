@@ -12,7 +12,7 @@ def test_crear_devolucion():
         motivo="Producto defectuoso",
         estado="pendiente"
     )
-    devolucion = devolution.crear_devolucion(db, devolucion_data)
+    devolucion = devolutions.crear_devolucion(db, devolucion_data)
     assert devolucion.estado == "pendiente"
     assert devolucion.motivo == "Producto defectuoso"
     db.delete(devolucion)
