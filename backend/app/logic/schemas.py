@@ -63,6 +63,7 @@ class DevolucionBase(BaseModel):
     orden_id: int
     usuario_id: int
     motivo: Optional[str] = None
+    estado: str
 
 class Devolucion(DevolucionBase):
     id: int
