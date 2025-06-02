@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import productos, usuarios, carritos, ordenes, devoluciones
+from backend.app.routers import product, user, cart, order, devolutions
 app = FastAPI()
 
 # Configurar CORS

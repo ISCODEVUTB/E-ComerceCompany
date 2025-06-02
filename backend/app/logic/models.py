@@ -2,13 +2,15 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, DECIMAL
 from sqlalchemy.orm import relationship
 from backend.app.logic.database import Base
 from datetime import datetime
+USUARIOS_ID = "usuarios.id"
+
 
 class Usuario(Base):
     __tablename__ = "usuarios"
     id = Column(Integer, primary_key=True, index=True)
-    nombre = Column(String(100), nullable=False)
+    nombre_usuario = Column(String(100), nullable=False)
     correo_electronico = Column(String(100), unique=True, nullable=False)
-    contrasena = Column(String(100), nullable=False)
+    contraseña = Column(String(100), nullable=False)
     rol = Column(String(20), nullable=False)
 
     carritos = relationship("Carrito", back_populates="usuario")
@@ -20,7 +22,7 @@ class Producto(Base):
     nombre = Column(String(100), nullable=False)
     descripcion = Column(String, nullable=True)
     precio = Column(DECIMAL(10, 2), nullable=False)
-    inventario = Column(Integer, nullable=False)
+    stock = Column(Integer, nullable=False)
 
     carrito_items = relationship("CarritoItem", back_populates="producto")
     items_orden = relationship("ItemOrden", back_populates="producto")
@@ -28,7 +30,7 @@ class Producto(Base):
 class Carrito(Base):
     __tablename__ = "carritos"
     id = Column(Integer, primary_key=True, index=True)
-    usuario_id = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
+    usuario_id = Column(Integer, ForeignKey(USUARIOS_ID), nullable=False)
     estado = Column(String(20), nullable=False, default="activo")
     creado_en = Column(DateTime, default=datetime.utcnow)
 
@@ -49,7 +51,7 @@ class CarritoItem(Base):
 class Orden(Base):
     __tablename__ = "ordenes"
     id = Column(Integer, primary_key=True, index=True)
-    usuario_id = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
+    usuario_id = Column(Integer, ForeignKey(USUARIOS_ID), nullable=False)
     carrito_id = Column(Integer, ForeignKey("carritos.id"), nullable=False)
     monto_total = Column(DECIMAL(10, 2), nullable=False)
     creado_en = Column(DateTime, default=datetime.utcnow)
