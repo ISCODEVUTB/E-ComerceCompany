@@ -6,6 +6,11 @@ from backend.app.crud import cart, user
 
 def test_crear_carrito():
     db: Session = SessionLocal()
+    from backend.app.logic.models import Orden, Carrito, Usuario
+    db.query(Orden).delete()
+    db.query(Carrito).delete()
+    db.query(Usuario).delete()
+    db.commit()
     # 1. Crear usuario
     usuario_data = UsuarioCreate(
         nombre_usuario="Test User",

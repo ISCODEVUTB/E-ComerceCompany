@@ -7,6 +7,9 @@ from backend.app.crud import user
 
 def test_crear_usuario():
     db: Session = SessionLocal()
+    from backend.app.logic.models import Usuario
+    db.query(Usuario).delete()
+    db.commit()
     usuario_data = UsuarioCreate(
         nombre_usuario="Test User",
         correo_electronico="test@example.com",
