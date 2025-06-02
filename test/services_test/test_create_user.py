@@ -8,13 +8,13 @@ from backend.app.crud import user
 def test_crear_usuario():
     db: Session = SessionLocal()
     usuario_data = UsuarioCreate(
-        nombre="Test User",
+        nombre_usuario="Test User",
         correo_electronico="test@example.com",
         rol="cliente",
-        contrasena="123456"
+        contraseña="123456"
     )
     usuario = user.crear_usuario(db, usuario_data)
-    assert usuario.nombre == "Test User"
+    assert usuario.nombre_usuario == "Test User"
     db.delete(usuario)
     db.commit()
     db.close()

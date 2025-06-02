@@ -2,12 +2,12 @@ from pydantic import BaseModel, ConfigDict
 from typing import Optional, List
 
 class UsuarioBase(BaseModel):
-    nombre: str
+    nombre_usuario: str
     correo_electronico: str
     rol: str
 
 class UsuarioCreate(UsuarioBase):
-    contrasena: str
+    contraseña: str
 
 class Usuario(UsuarioBase):
     id: int
@@ -18,7 +18,7 @@ class ProductoBase(BaseModel):
     nombre: str
     descripcion: Optional[str] = None
     precio: float
-    inventario: int
+    stock: int
 
 class ProductoCreate(ProductoBase):
     pass
