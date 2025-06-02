@@ -5,7 +5,7 @@ from backend.app.crud.devolutions import (
     actualizar_devolucion, eliminar_devolucion
 )
 from backend.app.logic.schemas import Devolucion, DevolucionBase
-from ..database import get_db
+from backend.app.logic.database import get_db
 
 router = APIRouter()
 

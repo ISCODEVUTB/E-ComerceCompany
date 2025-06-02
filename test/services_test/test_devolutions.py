@@ -8,7 +8,7 @@ from backend.app.crud import devolution
 def test_crear_devolucion():
     db: Session = SessionLocal()
     devolucion_data = DevolucionBase(
-        pedido_id=1,
+        orden_id=1,
         motivo="Producto defectuoso",
         estado="pendiente"
     )
