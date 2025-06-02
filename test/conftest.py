@@ -16,4 +16,3 @@ def db():
         yield db
     finally:
         db.close()
-        Base.metadata.drop_all(bind=engine)

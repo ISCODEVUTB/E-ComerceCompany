@@ -33,7 +33,7 @@ class Carrito(Base):
     id = Column(Integer, primary_key=True, index=True)
     usuario_id = Column(Integer, ForeignKey(USUARIOS_ID), nullable=False)
     estado = Column(String(20), nullable=False, default="activo")
-    creado_en = Column(DateTime(timezone=True), default=utc_now)
+    creado_en = Column(DateTime, default=utc_now)
 
     usuario = relationship("Usuario", back_populates="carritos")
     items = relationship("CarritoItem", back_populates="carrito")
@@ -55,7 +55,7 @@ class Orden(Base):
     usuario_id = Column(Integer, ForeignKey(USUARIOS_ID), nullable=False)
     carrito_id = Column(Integer, ForeignKey("carritos.id"), nullable=False)
     monto_total = Column(DECIMAL(10, 2), nullable=False)
-    creado_en = Column(DateTime(timezone=True), default=utc_now)
+    creado_en = Column(DateTime, default=utc_now)
     estado = Column(String(20), nullable=False, default="pendiente")
 
     usuario = relationship("Usuario", back_populates="ordenes")
@@ -79,7 +79,7 @@ class Devolucion(Base):
     orden_id = Column(Integer, ForeignKey("ordenes.id"), nullable=False)
     usuario_id = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
     motivo = Column(String, nullable=True)
-    creado_en = Column(DateTime(timezone=True), default=utc_now)
+    creado_en = Column(DateTime, default=utc_now)
 
     orden = relationship("Orden")
     usuario = relationship("Usuario")

@@ -6,6 +6,8 @@ from backend.app.crud.devolutions import (
 )
 from backend.app.logic.schemas import Devolucion, DevolucionBase
 from backend.app.logic.database import get_db
+DEVOLUCION_NO_ENCONTRADA = "Devolución no encontrada"
+
 
 router = APIRouter()
 
@@ -17,7 +19,7 @@ def leer_devoluciones(db: Session = Depends(get_db)):
 def leer_devolucion_por_id(devolucion_id: int, db: Session = Depends(get_db)):
     devolucion = obtener_devolucion_por_id(db, devolucion_id)
     if not devolucion:
-        raise HTTPException(status_code=404, detail="Devolución no encontrada")
+        raise HTTPException(status_code=404, detail=DEVOLUCION_NO_ENCONTRADA)
     return devolucion
 
 @router.post("/", response_model=Devolucion)
@@ -28,12 +30,12 @@ def crear_devolucion_endpoint(devolucion: DevolucionBase, db: Session = Depends(
 def actualizar_devolucion_endpoint(devolucion_id: int, devolucion: DevolucionBase, db: Session = Depends(get_db)):
     devolucion_actualizada = actualizar_devolucion(db, devolucion_id, devolucion)
     if not devolucion_actualizada:
-        raise HTTPException(status_code=404, detail="Devolución no encontrada")
+        raise HTTPException(status_code=404, detail=DEVOLUCION_NO_ENCONTRADA)
     return devolucion_actualizada
 
 @router.delete("/{devolucion_id}", response_model=Devolucion)
 def eliminar_devolucion_endpoint(devolucion_id: int, db: Session = Depends(get_db)):
     devolucion_eliminada = eliminar_devolucion(db, devolucion_id)
     if not devolucion_eliminada:
-        raise HTTPException(status_code=404, detail="Devolución no encontrada")
+        raise HTTPException(status_code=404, detail=DEVOLUCION_NO_ENCONTRADA)
     return devolucion_eliminada
