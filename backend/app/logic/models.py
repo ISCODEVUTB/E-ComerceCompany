@@ -79,6 +79,7 @@ class Devolucion(Base):
     orden_id = Column(Integer, ForeignKey("ordenes.id"), nullable=False)
     usuario_id = Column(Integer, ForeignKey("usuarios.id"), nullable=False)
     motivo = Column(String, nullable=True)
+    estado = Column(String(50), nullable=False)  # <-- Agrega esta línea
     creado_en = Column(DateTime, default=utc_now)
 
     orden = relationship("Orden")

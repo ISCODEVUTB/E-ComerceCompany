@@ -13,11 +13,11 @@ app.add_middleware(
 )
 
 # Registrar los routers
-app.include_router(productos.router, prefix="/productos", tags=["Productos"])
-app.include_router(usuarios.router, prefix="/usuarios", tags=["Usuarios"])
-app.include_router(carritos.router, prefix="/carritos", tags=["Carritos"])
-app.include_router(ordenes.router, prefix="/ordenes", tags=["Órdenes"])
-app.include_router(devoluciones.router, prefix="/devoluciones", tags=["Devoluciones"])
+app.include_router(product.router, prefix="/productos", tags=["Productos"])
+app.include_router(user.router, prefix="/usuarios", tags=["Usuarios"])
+app.include_router(cart.router, prefix="/carritos", tags=["Carritos"])
+app.include_router(order.router, prefix="/ordenes", tags=["Órdenes"])
+app.include_router(devolutions.router, prefix="/devoluciones", tags=["Devoluciones"])
 
 @app.get("/")
 def read_root():

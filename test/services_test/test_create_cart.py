@@ -6,7 +6,8 @@ from backend.app.crud import cart, user
 
 def test_crear_carrito():
     db: Session = SessionLocal()
-    from backend.app.logic.models import Orden, Carrito, Usuario
+    from backend.app.logic.models import Devolucion, Orden, Carrito, Usuario
+    db.query(Devolucion).delete()  # <-- Borra devoluciones primero
     db.query(Orden).delete()
     db.query(Carrito).delete()
     db.query(Usuario).delete()

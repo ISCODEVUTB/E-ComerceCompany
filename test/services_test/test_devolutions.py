@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy.orm import Session
 from backend.app.logic.database import SessionLocal
 from backend.app.logic.schemas import DevolucionBase, UsuarioCreate, OrdenBase, CarritoBase
-from backend.app.crud import devolution, user, order, cart
+from backend.app.crud import devolutions, user, order, cart
 
 def test_crear_devolucion():
     db: Session = SessionLocal()
@@ -40,7 +40,7 @@ def test_crear_devolucion():
         motivo="Producto defectuoso",
         estado="pendiente"
     )
-    devolucion = devolution.crear_devolucion(db, devolucion_data)
+    devolucion = devolutions.crear_devolucion(db, devolucion_data)
     assert devolucion.estado == "pendiente"
     assert devolucion.motivo == "Producto defectuoso"
     # 5. Limpiar registros
