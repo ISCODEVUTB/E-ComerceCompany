@@ -1,0 +1,31 @@
+﻿id,nombre,precio,imagen_url,stock
+001,Barco,50000,/static/images/001.jpg,30
+002,Bolso de playa,35000,/static/images/002.jpg,30
+003,Collar precolombino,25000,/static/images/003.jpg,30
+004,Camisa de palmera,55000,/static/images/004.jpg,30
+005,Recordatorio Colombia,10000,/static/images/005.jpg,30
+006,Cuadro Cosmo,35000,/static/images/006.jpg,30
+007,Collar de Iman,9000,/static/images/007.jpg,30
+008,Pintura de embarcadero,45000,/static/images/008.jpg,30
+009,Tela de arcoiris,10000,/static/images/009.jpg,30
+010,Tela Marron,10000,/static/images/010.jpg,30
+011,Collar Blanco,9500,/static/images/011.jpg,30
+012,Mu eca de palenquera,25000,/static/images/012.jpg,30
+013,Manualidad de ave,15000,/static/images/013.jpg,30
+014,Aretes blancos (1),6000,/static/images/014.jpg,30
+015,Collar,7000,/static/images/015.jpg,30
+016,Aretes blancos (2),6000,/static/images/016.jpg,30
+017,Pack de collares (1),30000,/static/images/017.jpg,30
+018,Pack de aretes (1),30000,/static/images/018.jpg,30
+019,Sombrero rosa,23000,/static/images/019.jpg,30
+020,Vaso de cristal,15000,/static/images/020.jpg,30
+021,Figura de Buho,22000,/static/images/021.jpg,30
+022,Figura de senora,20000,/static/images/022.jpg,30
+023,Figura Borracha,25000,/static/images/023.jpg,30
+024,Cartera tematica (1),10000,/static/images/024.jpg,30
+025,Cartera tematica (2),10000,/static/images/025.jpg,30
+026,Jarron tematico,45000,/static/images/026.jpg,30
+027,Set de domino,38000,/static/images/027.jpg,30
+028,Placa personalizada,30000,/static/images/028.jpg,30
+029,Bolso tematico,40000,/static/images/029.jpg,30
+030,Pack de vasos tematicos,35000,/static/images/030.jpg,30
