@@ -13,21 +13,6 @@ router = APIRouter()
 def leer_usuarios(db: Session = Depends(get_db)):
     return obtener_usuarios(db)
 
-@router.post("/login")
-def login(usuario: schemas.UsuarioLogin, db: Session = Depends(get_db)):
-    user = db.query(Usuario).filter(
-        Usuario.correo_electronico == usuario.correo_electronico
-    ).first()
-    if not user or not pwd_context.verify(usuario.contrasena, user.contrasena):  # <-- Cambia aquí
-        raise HTTPException(status_code=401, detail="Credenciales incorrectas")
-    token = crear_token({"usuario_id": user.id, "rol": user.rol})
-    return {
-        "access_token": token,
-        "token_type": "bearer",
-        "usuario_id": user.id,
-        "nombre": user.nombre_usuario,
-        "rol": user.rol
-    }
 
 @router.get("/{usuario_id}", response_model=Usuario)
 def leer_usuario_por_id(usuario_id: int, db: Session = Depends(get_db)):
