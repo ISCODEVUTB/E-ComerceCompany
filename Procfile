@@ -1,1 +1,0 @@
-web: uvicorn backend.app.logic.main:app --host 0.0.0.0 --port $PORT
