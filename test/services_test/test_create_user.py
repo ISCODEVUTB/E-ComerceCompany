@@ -14,7 +14,7 @@ def test_crear_usuario():
         nombre_usuario="Test User",
         correo_electronico="test@example.com",
         rol="cliente",
-        contraseña="123456"
+        contrasena="123456"
     )
     usuario = user.crear_usuario(db, usuario_data)
     assert usuario.nombre_usuario == "Test User"

@@ -7,7 +7,7 @@ class UsuarioBase(BaseModel):
     rol: str
 
 class UsuarioCreate(UsuarioBase):
-    contraseña: str
+    contrasena: str
 
 class Usuario(UsuarioBase):
     id: int

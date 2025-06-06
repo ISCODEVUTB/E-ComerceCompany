@@ -17,7 +17,7 @@ def test_crear_orden():
         nombre_usuario="Test User",
         correo_electronico="test@example.com",
         rol="cliente",
-        contraseña="123456"
+        contrasena="123456"
     )
     usuario = user.crear_usuario(db, usuario_data)
     # 2. Crear carrito

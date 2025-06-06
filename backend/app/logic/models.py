@@ -11,7 +11,7 @@ class Usuario(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre_usuario = Column(String(100), nullable=False)
     correo_electronico = Column(String(100), unique=True, nullable=False)
-    contraseña = Column(String(100), nullable=False)
+    contrasena = Column(String(100), nullable=False)
     rol = Column(String(20), nullable=False)
 
     carritos = relationship("Carrito", back_populates="usuario")

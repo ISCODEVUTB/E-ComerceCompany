@@ -29,13 +29,13 @@
         <div v-if="modo === 'registro'">
           <input class="form-control mb-2" v-model="nuevoUsuario.nombre_usuario" placeholder="Nombre" />
           <input class="form-control mb-2" v-model="nuevoUsuario.correo_electronico" placeholder="Correo" />
-          <input class="form-control mb-2" v-model="nuevoUsuario.contrasena" placeholder="Contraseña" type="password" />
+          <input class="form-control mb-2" v-model="nuevoUsuario.contrasena" placeholder="Contrasena" type="password" />
           <button class="btn btn-primary btn-sm w-100" @click="registrarUsuario">Registrarse</button>
           <button class="btn btn-link btn-sm w-100" @click="modo = 'login'">¿Ya tienes cuenta? Inicia sesión</button>
         </div>
         <div v-else>
           <input class="form-control mb-2" v-model="loginUsuario.correo_electronico" placeholder="Correo" />
-          <input class="form-control mb-2" v-model="loginUsuario.contrasena" placeholder="Contraseña" type="password" />
+          <input class="form-control mb-2" v-model="loginUsuario.contrasena" placeholder="Contrasena" type="password" />
           <button class="btn btn-success btn-sm w-100" @click="iniciarSesion">Iniciar sesión</button>
           <button class="btn btn-link btn-sm w-100" @click="modo = 'registro'">¿No tienes cuenta? Regístrate</button>
         </div>
