@@ -39,129 +39,133 @@ La aplicación está disponible públicamente en los siguientes enlaces:
 
 ## Estructura del proyecto
   C:.
-  └───E-ComerceCompany-main
-      │   Dockerfile
-      │   LICENSE
-      │   Procfile
-      │   README.md
-      │   requirements.txt
-      │   sonar-project.properties
-      │
-      ├───.github
-      │   └───workflows
-      │           build.yml
-      │           sonarqube.yml           ## Tareas y funcionamiento de CI
-      │           test.yml
-      │
-      ├───backend
-      │   └───app
-      │       ├───crud
-      │       │       cart.py
-      │       │       devolutions.py
-      │       │       order.py             ## Operaciones principales
-      │       │       product.py
-      │       │       user.py
-      │       │
-      │       ├───logic
-      │       │       database.py
-      │       │       main.py              ## Logica de negocios y servicios
-      │       │       models.py
-      │       │       schemas.py
-      │       │
-      │       ├───routers
-      │       │       cart.py
-      │       │       devolutions.py
-      │       │       order.py             ## Rutas de servicios
-      │       │       product.py
-      │       │       user.py
-      │       │
-      │       └───static
-      │           └───images
-      │                   001.jpg
-      │                   002.jpg
-      │                   003.jpg
-      │                   004.jpg
-      │                   005.jpg
-      │                   006.jpg
-      │                   007.jpg
-      │                   008.jpg
-      │                   009.jpg
-      │                   010.jpg
-      │                   011.jpg
-      │                   012.jpg          ## Imagenes de productos
-      │                   013.jpg
-      │                   014.jpg
-      │                   015.jpg           
-      │                   016.jpg
-      │                   017.jpg
-      │                   018.jpg
-      │                   019.jpg
-      │                   020.jpg
-      │                   021.jpg
-      │                   022.jpg
-      │                   023.jpg
-      │                   024.jpg
-      │                   025.jpg
-      │                   026.jpg
-      │                   027.jpg
-      │                   028.jpg
-      │                   029.jpg
-      │                   030.jpg
-      │
-      ├───doc
-      │       presentation
-      │       Products_Data(Hoja1).csv    ## Documentacion, ruta e ID de cada producto
-      │
-      ├───frontend
-      │   │   .gitignore
-      │   │   index.html
-      │   │   package-lock.json
-      │   │   package.json                
-      │   │   README.md
-      │   │   view
-      │   │   vite.config.js
-      │   │
-      │   ├───.vscode
-      │   │       extensions.json         
-      │   │
-      │   ├───public
-      │   │       vite.svg
-      │   │
-      │   └───src
-      │       │   App.vue
-      │       │   eventBus.js             ## Logica de funcionamiento
-      │       │   main.js
-      │       │   style.css
-      │       │
-      │       ├───assets
-      │       │       vue.svg
-      │       │
-      │       └───components
-      │               AdminPanel.vue
-      │               Carrito.vue
-      │               HelloWorld.vue
-      │               PagoSimulado.vue
-      │               Productos.vue
-      │               Usuario.vue
-      │
-      └───test
-          │   conftest.py
-          │
-          ├───db_test
-          │       drivers_test.py
-          │       test_database.py
-          │
-          ├───integration_test
-          │       locustfile.py
-          │       test_integracion.py             ## Test unitarios de cada producto
-          │       test_integration_v1.py
-          │
-          └───services_test
-                  test_create_cart.py
-                  test_create_order.py
-                  test_create_user.py
-                  test_devolutions.py
-                  test_product_service.py
+ª   estructura.txt
+ª   
++---E-ComerceCompany-main
+    ª   Dockerfile
+    ª   LICENSE
+    ª   Procfile
+    ª   README.md
+    ª   requirements.txt
+    ª   sonar-project.properties
+    ª   
+    +---.github
+    ª   +---workflows
+    ª           build.yml
+    ª           sonarqube.yml
+    ª           test.yml
+    ª           
+    +---backend
+    ª   +---app
+    ª       +---crud
+    ª       ª       cart.py
+    ª       ª       devolutions.py
+    ª       ª       order.py
+    ª       ª       product.py
+    ª       ª       user.py
+    ª       ª       
+    ª       +---logic
+    ª       ª       database.py
+    ª       ª       main.py
+    ª       ª       models.py
+    ª       ª       schemas.py
+    ª       ª       
+    ª       +---routers
+    ª       ª       cart.py
+    ª       ª       devolutions.py
+    ª       ª       order.py
+    ª       ª       product.py
+    ª       ª       user.py
+    ª       ª       
+    ª       +---static
+    ª           +---images
+    ª                   001.jpg
+    ª                   002.jpg
+    ª                   003.jpg
+    ª                   004.jpg
+    ª                   005.jpg
+    ª                   006.jpg
+    ª                   007.jpg
+    ª                   008.jpg
+    ª                   009.jpg
+    ª                   010.jpg
+    ª                   011.jpg
+    ª                   012.jpg
+    ª                   013.jpg
+    ª                   014.jpg
+    ª                   015.jpg
+    ª                   016.jpg
+    ª                   017.jpg
+    ª                   018.jpg
+    ª                   019.jpg
+    ª                   020.jpg
+    ª                   021.jpg
+    ª                   022.jpg
+    ª                   023.jpg
+    ª                   024.jpg
+    ª                   025.jpg
+    ª                   026.jpg
+    ª                   027.jpg
+    ª                   028.jpg
+    ª                   029.jpg
+    ª                   030.jpg
+    ª                   
+    +---doc
+    ª       presentation
+    ª       Products_Data(Hoja1).csv
+    ª       
+    +---frontend
+    ª   ª   .gitignore
+    ª   ª   index.html
+    ª   ª   package-lock.json
+    ª   ª   package.json
+    ª   ª   README.md
+    ª   ª   view
+    ª   ª   vite.config.js
+    ª   ª   
+    ª   +---.vscode
+    ª   ª       extensions.json
+    ª   ª       
+    ª   +---public
+    ª   ª       vite.svg
+    ª   ª       
+    ª   +---src
+    ª       ª   App.vue
+    ª       ª   eventBus.js
+    ª       ª   main.js
+    ª       ª   style.css
+    ª       ª   
+    ª       +---assets
+    ª       ª       vue.svg
+    ª       ª       
+    ª       +---components
+    ª               AdminPanel.vue
+    ª               Carrito.vue
+    ª               HelloWorld.vue
+    ª               PagoSimulado.vue
+    ª               Productos.vue
+    ª               Usuario.vue
+    ª               
+    +---test
+        ª   conftest.py
+        ª   
+        +---db_test
+        ª       drivers_test.py
+        ª       test_database.py
+        ª       
+        +---integration_test
+        ª       locustfile.py
+        ª       test_integracion.py
+        ª       test_integration_v1.py
+        ª       
+        +---services_test
+                test_create_cart.py
+                test_create_order.py
+                test_create_user.py
+                test_devolutions.py
+                test_product_service.py
+                
+
   
 
 ## Equipo de Desarrollo
