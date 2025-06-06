@@ -87,7 +87,7 @@ export default {
         return;
       }
       try {
-        const res = await fetch('http://localhost:8000/usuarios/', {
+        const res = await fetch('https://e-comercecompany-production.up.railway.app/productos', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -120,7 +120,7 @@ export default {
         return;
       }
       try {
-        const res = await fetch('http://localhost:8000/usuarios/login', {
+        const res = await fetch('https://e-comercecompany-production.up.railway.app/productos', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -147,7 +147,7 @@ export default {
         return;
       }
       try {
-        const res = await fetch('http://localhost:8000/productos/', {
+        const res = await fetch('hhttps://e-comercecompany-production.up.railway.app/productos', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

@@ -6,7 +6,7 @@ const error = ref('')
 
 async function cargarProductos() {
   try {
-    const response = await fetch('http://localhost:8000/productos/')
+    const response = await fetch('https://e-comercecompany-production.up.railway.app/productos')
     productos.value = await response.json()
   } catch (e) {
     error.value = 'No se pudieron cargar los productos'

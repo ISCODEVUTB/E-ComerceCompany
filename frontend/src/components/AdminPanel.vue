@@ -55,7 +55,7 @@ export default {
         formData.append("stock", this.nuevoProducto.stock);
         formData.append("imagen", this.nuevoProducto.imagen);
 
-        const res = await fetch('http://localhost:8000/productos/', {
+        const res = await fetch('https://e-comercecompany-production.up.railway.app/productos', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`

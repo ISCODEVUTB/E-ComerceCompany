@@ -78,7 +78,7 @@ export default {
         cantidad: 1 // Cambia esto si tienes lógica de cantidad
       }));
       try {
-        const res = await fetch('http://localhost:8000/ordenes/compra', {
+        const res = await fetch('https://e-comercecompany-production.up.railway.app/productos', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ productos })

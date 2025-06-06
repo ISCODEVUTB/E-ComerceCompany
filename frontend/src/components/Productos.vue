@@ -46,7 +46,7 @@ export default {
     }
   },
   mounted() {
-    fetch('http://localhost:8000/productos/')
+    fetch('https://e-comercecompany-production.up.railway.app/productos')
       .then(res => res.json())
       .then(data => {
         this.productos = data;
