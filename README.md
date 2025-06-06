@@ -37,7 +37,7 @@ La aplicación está disponible públicamente en los siguientes enlaces:
 ![Vista del frontend](https://i.postimg.cc/Vv7m7VVn/Captura-de-pantalla-2025-06-06-112935.png)
 
 
-  ## Estructura del proyecto
+## Estructura del proyecto
   C:.
   └───E-ComerceCompany-main
       │   Dockerfile
